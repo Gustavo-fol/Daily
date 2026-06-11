@@ -5,11 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>📖 Meu Diário</title>
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/cards.css"
 </head>
 <body class="dark">
 
   <div class="container">
     <h1>📖 Meu Diário</h1>
+    <p id="contador"></p>
 
     <!-- NAVBAR -->
     <nav class="navbar">
@@ -22,6 +24,17 @@
     <div class="form-busca">
       <input type="search" id="search" placeholder="🔍 Buscar anotações...">
     </div>
+
+    <!--ORDENAR-->
+    <div class="btn-ordenar">
+    <button onclick="ordenar('recente')" id="btn-recente" class="sort-btn active">
+    Mais recente
+    </button>
+    <button onclick="ordenar('antiga')" id="btn-antiga" class="sort-btn">
+    Mais antiga
+    </button>
+    </div>
+
 
     <!-- LISTA -->
     <div id="lista"></div>
