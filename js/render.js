@@ -19,6 +19,7 @@ function renderizar(listaElemento, dados, editarCallback, removerCallback) {
     card.style.animationDelay = `${i * 60}ms`;
     listaElemento.appendChild(card);
   });
+  atualizaçãocontador();
 }
 
 // =========================

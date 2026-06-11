@@ -2,6 +2,8 @@
 // ESTADO
 // =========================
 let dados = carregarDados();
+let ordemAtual = "recente";
+
 
 // =========================
 // ELEMENTOS
@@ -18,9 +20,17 @@ inputBusca.addEventListener("input", pesquisar);
 // PESQUISA
 // =========================
 function pesquisar() {
-  const termo     = inputBusca.value;
+  const termo = inputBusca.value;
   const resultado = buscarDados(dados, termo);
+
+  resultado.sort((a, b) =>
+    ordemAtual === "recente"
+      ? b.data.localeCompare(a.data)
+      : a.data.localeCompare(b.data)
+  );
+
   renderizar(lista, resultado, editar, remover);
+  atualizarContador();
 }
 
 // =========================
@@ -28,6 +38,7 @@ function pesquisar() {
 // =========================
 function editar(item) {
   abrirModal(item);
+  atualizaçãocontador();
 }
 
 // =========================
@@ -35,6 +46,7 @@ function editar(item) {
 // =========================
 function remover(item) {
   abrirConfirm(item);
+  atualizaçãocontador();
 }
 
 // =========================
@@ -112,3 +124,17 @@ function mostrarToast(msg, tipo = "sucesso") {
 aplicarTemaSalvo();
 iniciarNavbar();
 renderizar(lista, dados, editar, remover);
+atualizaçãocontador
+
+// =========================
+// CONTADOR
+// =========================
+function atualizaçãocontador(){{
+  const el = document.getElementById("contador");
+  if(!el)return;
+  const total = dados.length;
+  el.textContent = total === 0
+  ? "Nenhuma anotação"
+  : `${total} anotação${total > 1 ? "s" : ""}`;
+
+}}
